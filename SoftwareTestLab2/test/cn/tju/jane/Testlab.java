@@ -1,5 +1,8 @@
 package cn.tju.jane;
-
+/**
+ * @author Jane
+ * 
+ */
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,19 +33,18 @@ public class Testlab {
 	public void testLab() throws Exception {
 		String username, url;
 
-		List<Map<String, String>> list = getinfo.getExcelValue();
+		Map<String, String> map = getinfo.getExcelValue();
 
-		for (Map<String, String> map : list) {
+	
 			for (Entry<String, String> entry : map.entrySet()) {
 				username = entry.getKey();
 				url = entry.getValue();
 				if (username.isEmpty()) {
 					System.out.println("The username is null");
-
-				} else if (url.isEmpty()) {
-					System.out.println("The url is null");
-
-				} else {
+				} else if(url.isEmpty()){
+					System.out.println(username + "The url is null"); 
+					
+				}else {
 					username = username.trim();
 					url = url.trim();
 					driver.get("https://psych.liebes.top/st");
@@ -58,7 +60,7 @@ public class Testlab {
 				}
 			}
 		}
-	}
+	
 
 	@After
 	public void tearDown() throws Exception {

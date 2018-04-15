@@ -1,4 +1,7 @@
 package cn.tju.jane;
+/**
+ * @author Jane
+ */
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +31,7 @@ public class GetCheckInfo {
 	String filePath = "E:\\input.xlsx";
 	String columns[] = { "number", "url" };
 
-	public List<Map<String, String>> getExcelValue() {
+	public Map<String, String> getExcelValue() {
 		wb = readExcel(filePath);
 		Map<String, String> map = new LinkedHashMap<String, String>();
 		if (wb != null) {
@@ -42,8 +45,8 @@ public class GetCheckInfo {
 			row = sheet.getRow(0);
 			// 获取最大列数
 			int colnum = row.getPhysicalNumberOfCells();
-
-			for (int i = 1; i < rownum; i++) {
+			//System.out.println(rownum+" "+colnum);
+			for (int i = 0; i < rownum; i++) {
 				row = sheet.getRow(i);
 				if (row != null) {
 					username = (String) getCellFormatValue(row.getCell(0));
@@ -53,11 +56,11 @@ public class GetCheckInfo {
 				} else {
 					break;
 				}
-				list.add(map);
+				//list.add(map);
 			}
 		}
 
-		return list;
+		return map;
 	}
 
 	// 读取excel
